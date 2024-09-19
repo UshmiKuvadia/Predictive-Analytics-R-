@@ -31,5 +31,5 @@ This project focuses on predicting used car prices using a dataset of 10,000 car
   - Assessed model performance using metrics such as R-squared, Mean Absolute Error (MAE), and Root Mean Squared Error (RMSE).
 
 ## How to Access the Code and it's Overview
-**Click here for the code:** https://github.com/UshmiKuvadia/Predictive-Analytics-R-/blob/main/PAC_Final_Code_File.qmd
-**Click here to view the report:** https://github.com/UshmiKuvadia/Predictive-Analytics-R-/commit/90539e0f03ea284b3290c96cc29adacbf3c1ea1d
+- **Click here for the code:** https://github.com/UshmiKuvadia/Predictive-Analytics-R-/blob/main/PAC_Final_Code_File.qmd
+- **Click here to view the report:** https://github.com/UshmiKuvadia/Predictive-Analytics-R-/commit/90539e0f03ea284b3290c96cc29adacbf3c1ea1d
