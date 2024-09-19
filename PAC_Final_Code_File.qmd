@@ -1,0 +1,49 @@
+---
+title: "Kaggle Final"
+author: "Ushmi Kuvadia"
+format: html
+editor: visual
+---
+
+```{r}
+carprice = read.csv(file = "/Users/ushmikuvadia/Downloads/analysisData.csv")
+
+sum(is.na(carprice$price))
+
+carprice = na.omit(carprice)
+
+library(caTools)
+set.seed(123)
+
+split = sample.split(carprice, SplitRatio = 0.70)
+
+training_car = subset(carprice, split == TRUE)
+testing_car = subset(carprice, split == FALSE)
+
+carpredict_rf = randomForest(price ~ horsepower + engine_displacement + seller_rating + mileage, data = training_car)
+
+testing_car$predicted_carprice_rf = predict(carpredict_rf, newdata = testing_car)
+
+na_indices = is.na(testing_car$predicted_carprice_rf)
+if (sum(na_indices) > 0) {na_data = testing_car[na_indices, ]
+  na_data$predicted_carprice_rf = predict(carpredict_rf, newdata = na_data)
+  testing_car$predicted_carprice_rf[na_indices] = na_data$predicted_carprice_rf}
+
+rmse_rf = sqrt(mean((testing_car$predicted_carprice_rf - testing_car$price)^2))
+rmse_rf
+
+scoringData = read.csv('/Users/ushmikuvadia/Downloads/scoringData.csv')
+
+scoringData_na = scoringData
+na_indices = is.na(scoringData_na$price)
+if (sum(na_indices) > 0) {na_data = scoringData_na[na_indices, ]
+  na_data$price = predict(carpredict_rf, newdata = na_data)
+  scoringData_na$price[na_indices] = na_data$price}
+
+pred_rf = predict(carpredict_rf, newdata = scoringData_na)
+
+
+submissionFile_rf = data.frame(id = scoringData$id, price = pred_rf)
+write.csv(submissionFile_rf, '/Users/ushmikuvadia/Downloads/submission_11.csv', row.names = FALSE)
+
+```
