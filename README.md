@@ -1,5 +1,5 @@
 # Used Car Prediction - Predictive Analytics
-May 2024
+(May 2024)
 
 This project focuses on predicting used car prices using a dataset of 10,000 cars. Through comprehensive data preparation and predictive modeling techniques, the project aims to provide insights into the factors that influence car prices.
 
